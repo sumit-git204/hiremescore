@@ -22,28 +22,31 @@ const ResumeOptimizer = ({ optimizations }) => {
 
             <div className="space-y-6">
                 {optimizations.improvements.map((item, idx) => (
-                    <div key={idx} className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        {/* Original */}
-                        <div className="bg-red-500/10 border border-red-500/20 rounded-lg p-4 relative">
-                            <span className="absolute top-0 right-0 bg-red-500/20 text-red-400 text-xs px-2 py-1 rounded-bl-lg rounded-tr-lg font-bold">Original</span>
-                            <p className="text-sm text-gray-300 mt-2">{item.original}</p>
-                        </div>
+                   <div className="grid grid-cols-1 md:grid-cols-[1fr_auto_1fr] gap-4 items-center">
+    {/* Original */}
+    <div className="bg-red-500/10 border border-red-500/20 rounded-lg p-4 relative">
+        <span className="absolute top-0 right-0 bg-red-500/20 text-red-400 text-xs px-2 py-1 rounded-bl-lg rounded-tr-lg font-bold">Original</span>
+        <p className="text-sm text-gray-300 mt-2">{item.original}</p>
+    </div>
 
-                        {/* AI Arrow (Desktop) */}
-                        <div className="hidden md:flex items-center justify-center -mx-6 z-10">
-                            <div className="bg-dark-900 border border-gray-700 rounded-full p-2">
-                                <ArrowRight className="text-gray-500" size={16} />
-                            </div>
-                        </div>
+    {/* Arrow — now correctly in the middle column */}
+    <div className="hidden md:flex items-center justify-center">
+        <div className="bg-dark-900 border border-gray-700 rounded-full p-2">
+            <ArrowRight className="text-gray-500" size={16} />
+        </div>
+    </div>
 
-                        {/* Optimized */}
-                        <div className="bg-neon-green/10 border border-neon-green/50 rounded-lg p-4 relative group">
-                            <span className="absolute top-0 right-0 bg-neon-green/20 text-neon-green text-xs px-2 py-1 rounded-bl-lg rounded-tr-lg font-bold flex items-center gap-1 cursor-pointer hover:bg-neon-green hover:text-dark-900 transition-colors" onClick={() => handleCopy(item.optimized, idx)}>
-                                {copiedIndex === idx ? <Check size={12} /> : "Copy AI Version"}
-                            </span>
-                            <p className="text-sm text-white mt-2 font-medium">{item.optimized}</p>
-                        </div>
-                    </div>
+    {/* Optimized */}
+    <div className="bg-neon-green/10 border border-neon-green/50 rounded-lg p-4 relative group">
+        <span
+            className="absolute top-0 right-0 bg-neon-green/20 text-neon-green text-xs px-2 py-1 rounded-bl-lg rounded-tr-lg font-bold flex items-center gap-1 cursor-pointer hover:bg-neon-green hover:text-dark-900 transition-colors"
+            onClick={() => handleCopy(item.optimized, idx)}
+        >
+            {copiedIndex === idx ? <Check size={12} /> : "Copy AI Version"}
+        </span>
+        <p className="text-sm text-white mt-2 font-medium">{item.optimized}</p>
+    </div>
+</div>
                 ))}
             </div>
         </div>
