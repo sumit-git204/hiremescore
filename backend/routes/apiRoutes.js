@@ -9,9 +9,9 @@ const { uploadResumeAndParse } = require('../controllers/resumeController');
 const { analyzeGitHubAndGenerateScore } = require('../controllers/githubController');
 
 // Resume Upload & Parse using Gemini
-router.post('/api/analyze/resume', upload.single('resume'), uploadResumeAndParse);
+router.post('/analyze/resume', upload.single('resume'), uploadResumeAndParse);
 
 // GitHub Analysis & Final Score Calculation
-router.post('/api/analyze/github', analyzeGitHubAndGenerateScore);
+router.post('/analyze/github', analyzeGitHubAndGenerateScore);
 
 module.exports = router;
